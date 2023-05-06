@@ -4,10 +4,7 @@ const User = require('../models/user');
 
 
 module.exports.renderRegister = (req, res) => {
-    const date = new Date()
-    const formatters = new Intl.DateTimeFormat('sv', { dateStyle: 'short', timeZone: 'Asia/Kolkata' })
-    const hell = formatters.format(date)//.split('-').slice(1).join('-');
-    console.log(hell)
+    console.log(req.user.username)
     res.send('register')
 }
 
@@ -28,14 +25,14 @@ module.exports.register = async(req, res, next)=>{
     });
     console.log(`user.....${user}`)
 
-    const hello = await User.register(user, password);
-    console.log(`hello.....${hello}`)
+    const registeredUser = await User.register(user, password);
+    console.log(`registeredUser.....${registeredUser}`)
 
-    // req.login(registeredUser, err => {
-    //     if (err) return next(err);
-    //     // req.flash('success', `Welcome to GetMeat ${user.name}`);
-    //     // res.redirect(`${redirectUrl}`);
+    req.login(registeredUser, err => {
+        if (err) return next(err);
+        // req.flash('success', `Welcome to GetMeat ${user.name}`);
+        // res.redirect(`${redirectUrl}`);
         console.log('success')
-        res.redirect(`/`);
-    // });
+        res.send('campaign')
+    });
 }
