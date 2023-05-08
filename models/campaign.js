@@ -13,14 +13,14 @@ const CampaignSchema = new Schema({
         required: true,
         unique:false
     },
-    // photo: {
-    //     type: String,
-    //     required: true,
-    // },
-    // ask: {
-    //     type: Number,
-    //     required: true,
-    // },
+    photo: {
+        type: String,
+        required: true,
+    },
+    ask: {
+        type: Number,
+        required: true,
+    },
     tenure:{
         type:Number,
         required: true,

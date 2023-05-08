@@ -1,11 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const users = require('../controllers/user')
+const users = require('../controllers/user');
+const multer = require('multer');
+const { storage } = require('../cloudinary')
+const upload = multer({ storage });
 
 router.route('/register')
     .get(users.renderRegister)
-    .post(users.register);
+    .post( upload.array('image'), users.register);
+
 
 
 module.exports = router;
