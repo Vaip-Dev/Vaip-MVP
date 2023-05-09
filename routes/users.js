@@ -10,6 +10,7 @@ router.route('/register')
     .get(users.renderRegister)
     .post( upload.array('image'), users.register);
 
-
+router.route('/register')
+    .put(upload.array('image'), users.updateUser)
 
 module.exports = router;

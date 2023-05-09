@@ -36,3 +36,14 @@ module.exports.register = async(req, res, next)=>{
         res.send('campaign')
     });
 }
+
+
+module.exports.updateUser = async (req, res) => {
+const id = req.user._id;
+const s = req.body;
+const update = await User.findByIdAndUpdate(id, { ...req.body});
+//  const update = await User.findByIdAndUpdate(id, req.body, { runValidators: true, new: true });
+const imgs = await req.files.map(f => ({ url: f.path, filename: f.filename }));
+await update.images.push(...imgs);
+await update.save();
+}
