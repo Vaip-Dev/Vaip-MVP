@@ -12,7 +12,7 @@ module.exports.renderCampaign = (req, res) => {
 
 module.exports.campaign = async(req, res, next)=>{
     const { tenure, minInvestment, photo, ask, revenueShare , startDate, endDate, description, payoutCycle } = req.body;
-    const campaign=new Campaign({
+    const campaign = new Campaign({
         id:req.user._id,
         email:req.user.username,
         photo,

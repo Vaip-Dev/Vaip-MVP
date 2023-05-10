@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique:true
-    },
+    // username: {
+    //     type: String,
+    //     required: true,
+    //     unique:true
+    // },
     name: {
         type: String,
         required: true,
@@ -29,8 +29,12 @@ const UserSchema = new Schema({
     profilePic:{
         type:String,
         required: true,
-
     }
+    // creator platform details
+    // isCreator? - boolean
+    //Add Campaigns array
+    //Add TransactionIds - array
+    
 });
 
 UserSchema.plugin(passportLocalMongoose);

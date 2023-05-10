@@ -61,6 +61,11 @@ const CampaignSchema = new Schema({
         required: true,
 
     }
+
+    // NFT - Details
+    // number of NFTs
+
+    // Array - Invertors details (userId)
 });
 
 // UserSchema.plugin(passportLocalMongoose);
