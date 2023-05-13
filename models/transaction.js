@@ -26,7 +26,7 @@ const transactionSchema = new Schema({
 
     },
     investedOn:{
-        type:Number,
+        type:String,
         required: true,
 
     }

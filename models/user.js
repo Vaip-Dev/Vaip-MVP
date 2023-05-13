@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
+const { boolean } = require('webidl-conversions');
+const Transaction = require('./transaction');
+const Campaign = require('./campaign');
 
 const UserSchema = new Schema({
     // username: {
@@ -29,6 +32,18 @@ const UserSchema = new Schema({
     profilePic:{
         type:String,
         required: true,
+    },
+    isCreator:{
+        type:boolean,
+        required:true
+    },
+    campaignIds:{
+        type: Schema.Types.ObjectId,
+        ref: 'Campaign'
+    },
+    transactionIds:{
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction'
     }
     // creator platform details
     // isCreator? - boolean

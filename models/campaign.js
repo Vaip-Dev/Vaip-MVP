@@ -60,6 +60,10 @@ const CampaignSchema = new Schema({
         type:Number,
         required: true,
 
+    },
+    nftDetails:{
+        type:Number,
+        required:true
     }
 
     // NFT - Details
