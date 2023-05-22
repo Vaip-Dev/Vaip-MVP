@@ -3,9 +3,30 @@ const flash = require('connect-flash');
 const User = require('../models/user');
 
 
-module.exports.renderRegister = (req, res) => {
-    console.log(req.user.username)
-    res.send('register')
+module.exports.userDetails=async(req,res,next)=>{
+    // const {id}=req.params;
+
+const date = new Date()
+const formatters = new Intl.DateTimeFormat('sv', { dateStyle: 'short', timeZone: 'Asia/Kolkata' })
+const stamp = formatters.format(date);
+
+const fakeData= new User({
+    name:'Harish_User',
+    email:'harish_user@gmail.com',
+    mobileNumber:'9678789377',
+    createdOn:stamp,
+    userType:'Creator',
+    walletAddress:'qwertyuiopasdfghjkl',
+    profilePic:'https://static.vecteezy.com/system/resources/previews/000/662/785/original/man-face-cartoon-vector.jpg',
+    isCreator:true,
+    campaignIds: new mongoose.Types.ObjectId(),
+    transactionIds:new mongoose.Types.ObjectId()
+})
+await fakeData.save()
+    const {id} = fakeData;
+
+    const user=await User.findById(id);
+    res.status(200).json(user)
 }
 
 

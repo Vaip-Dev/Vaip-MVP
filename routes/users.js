@@ -7,10 +7,12 @@ const { storage } = require('../cloudinary')
 const upload = multer({ storage });
 
 router.route('/register')
-    .get(users.renderRegister)
     .post( upload.array('image'), users.register);
 
-router.route('/register')
+router.route('/userDash')
+    .get(users.userDetails)
+
+router.route('/update')
     .put(upload.array('image'), users.updateUser)
 
 module.exports = router;

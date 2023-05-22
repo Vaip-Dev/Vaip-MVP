@@ -66,22 +66,27 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 app.use(flash());
+async function fake(){
+// req.session.userId='';
 
 
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
+}
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+fake()
+// app.use(passport.initialize());
+// app.use(passport.session());
+// passport.use(new LocalStrategy(User.authenticate()));
 
-app.use((req, res, next) => {
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
+
+// app.use((req, res, next) => {
     // res.locals.returnTo = req.originalUrl;
     // console.log(`app.use....${req.session.returnTo}`)  
     // console.log(req.query)
-    res.locals.currentUser = req.user;
-    next();
-})
+//     res.locals.currentUser = req.user;
+//     next();
+// })
 
 app.use('/', userRoutes)
 app.use('/', campaignRoutes)

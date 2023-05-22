@@ -6,14 +6,18 @@ const Transaction = require('./transaction');
 const Campaign = require('./campaign');
 
 const UserSchema = new Schema({
-    // username: {
-    //     type: String,
-    //     required: true,
-    //     unique:true
-    // },
+    email: {
+        type: String,
+        required: true,
+        unique:true
+    },
     name: {
         type: String,
         required: true,
+    },
+    mobileNumber:{
+        type:Number,
+        required:false
     },
     createdOn: {
         type: String,
@@ -34,7 +38,7 @@ const UserSchema = new Schema({
         required: true,
     },
     isCreator:{
-        type:boolean,
+        type:Boolean,
         required:true
     },
     campaignIds:{
