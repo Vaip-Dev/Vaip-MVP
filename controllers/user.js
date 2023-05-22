@@ -1,17 +1,22 @@
 const passport = require('passport');
 const flash = require('connect-flash');
 const User = require('../models/user');
+const mongoose = require('mongoose');
+
 
 
 module.exports.userDetails=async(req,res,next)=>{
+
     // const {id}=req.params;
 
+    
+        
 const date = new Date()
 const formatters = new Intl.DateTimeFormat('sv', { dateStyle: 'short', timeZone: 'Asia/Kolkata' })
 const stamp = formatters.format(date);
 
 const fakeData= new User({
-    name:'Harish_User',
+    names:'Harish_User',
     email:'harish_user@gmail.com',
     mobileNumber:'9678789377',
     createdOn:stamp,
@@ -23,10 +28,12 @@ const fakeData= new User({
     transactionIds:new mongoose.Types.ObjectId()
 })
 await fakeData.save()
-    const {id} = fakeData;
+    // const {id} = fakeData;
+    console.log(fakeData)
+    // const user=await User.findById(id);
+    res.status(200).json(fakeData)
 
-    const user=await User.findById(id);
-    res.status(200).json(user)
+    
 }
 
 
