@@ -28,10 +28,10 @@ const fakeData= new User({
     transactionIds:new mongoose.Types.ObjectId()
 })
 await fakeData.save()
-    // const {id} = fakeData;
-    console.log(fakeData)
-    // const user=await User.findById(id);
-    res.status(200).json(fakeData)
+    const {id} = fakeData;
+    const user=await User.findById(id);
+    console.log(user)
+    res.status(200).json(user)
 
     
 }

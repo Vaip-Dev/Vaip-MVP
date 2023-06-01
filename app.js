@@ -14,10 +14,12 @@ const MongoStore = require("connect-mongo");
 const userRoutes = require('./routes/users');
 const campaignRoutes = require('./routes/campaigns');
 const User = require('./models/user');
+const cors =require('cors')
 
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
+app.use(cors);
 
 const dbUrl = process.env.DB_URL
 mongoose.connect(dbUrl, {
@@ -66,13 +68,7 @@ const sessionConfig = {
 
 app.use(session(sessionConfig));
 app.use(flash());
-async function fake(){
-// req.session.userId='';
 
-
-}
-
-fake()
 // app.use(passport.initialize());
 // app.use(passport.session());
 // passport.use(new LocalStrategy(User.authenticate()));
